@@ -38,7 +38,7 @@ public class FamilyTreeActivity extends BaseActivity implements IFamilyView {
     private static final int REQUEST_CHANGE_FAMILY = 1001;
     private static final int REQUEST_CODE_THEME = 1002;
 
-//    private FamilyTreeView mFamilyTree;
+    private FamilyTreeView mFamilyTree;
 
     private View mBackground;
     private LinearLayout mButtons;

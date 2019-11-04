@@ -5,7 +5,7 @@ package com.cxb.myfamilytree.config;
  */
 
 public class Constants {
-    public static final String BUGLY_APP_ID = "e581318ce4";//TODO 更改Bugly App Id
+//    public static final String BUGLY_APP_ID = "e581318ce4";//TODO 更改Bugly App Id
 
     public static final String TYPE_ADD_PARENT = "type_add_parent";//添加父母
     public static final String TYPE_ADD_SPOUSE = "type_add_spouse";//添加配偶

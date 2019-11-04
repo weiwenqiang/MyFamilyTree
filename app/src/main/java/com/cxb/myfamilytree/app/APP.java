@@ -2,9 +2,6 @@ package com.cxb.myfamilytree.app;
 
 import android.app.Application;
 
-import com.cxb.myfamilytree.config.Constants;
-import com.tencent.bugly.crashreport.CrashReport;
-
 /**
  * application
  */
@@ -18,7 +15,7 @@ public class APP extends Application {
         super.onCreate();
         mApp = this;
 
-        CrashReport.initCrashReport(getApplicationContext(), Constants.BUGLY_APP_ID, false);
+//        CrashReport.initCrashReport(getApplicationContext(), Constants.BUGLY_APP_ID, false);
     }
 
     public static APP get() {
