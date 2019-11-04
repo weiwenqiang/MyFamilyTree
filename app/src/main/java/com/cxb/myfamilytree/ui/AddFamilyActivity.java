@@ -29,8 +29,6 @@ import com.cxb.myfamilytree.utils.ImageUtils;
 import com.cxb.myfamilytree.utils.SDCardUtils;
 import com.cxb.myfamilytree.view.IAddFamilyView;
 import com.cxb.myfamilytree.widget.dialog.AlertDialogFragment;
-import com.cxb.myfamilytree.widget.dialog.DateTimePickerDialog;
-import com.cxb.myfamilytree.widget.dialog.DialogListener;
 
 import java.io.File;
 import java.util.Calendar;
@@ -58,7 +56,6 @@ public class AddFamilyActivity extends BaseActivity implements IAddFamilyView {
     private RadioGroup mGenderGroup;
     private Button btnDelete;
 
-    private DateTimePickerDialog mDatePicker;
     private AlertDialogFragment mDeleteDialog;
     private AlertDialogFragment mModifyDialog;
 
@@ -165,29 +162,6 @@ public class AddFamilyActivity extends BaseActivity implements IAddFamilyView {
         mEditBirthday.setLongClickable(false);
     }
 
-    private void showDateDialog(int tag, String dateText) {
-        if (mDatePicker == null) {
-            mDatePicker = new DateTimePickerDialog(this);
-            mDatePicker.setDialogClickListener(new DialogListener() {
-                @Override
-                public void onConfirmListener(int tag, String content) {
-                    if (tag == R.id.et_birthday) {
-                        mEditBirthday.setText(content);
-                    }
-                }
-            });
-        }
-
-        final Calendar calendar = Calendar.getInstance();
-        if (TextUtils.isEmpty(dateText)) {
-            calendar.setTime(new Date());
-        } else {
-            calendar.setTime(DateTimeUtils.StringToDateIgnoreTime(dateText));
-        }
-
-        mDatePicker.setDate(tag, calendar, false);
-        mDatePicker.show();
-    }
 
     private void showModifyDialog(final String name, final String call, final String birthday, final String gender) {
         if (mModifyDialog == null) {
@@ -355,9 +329,6 @@ public class AddFamilyActivity extends BaseActivity implements IAddFamilyView {
     protected void onDestroy() {
         super.onDestroy();
         mPresenter.detachView();
-        if (mDatePicker != null) {
-            mDatePicker.dismiss();
-        }
     }
 
     @Override
@@ -402,7 +373,6 @@ public class AddFamilyActivity extends BaseActivity implements IAddFamilyView {
                     break;
                 case R.id.et_birthday:
                     final String dateText = mEditBirthday.getText().toString();
-                    showDateDialog(R.id.et_birthday, dateText);
                     break;
                 case R.id.btn_delete:
                     showDeleteDialog();
